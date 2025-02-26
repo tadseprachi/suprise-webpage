@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise Me!</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            color: white;
+            background-color: #ff4d4d;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #d43f3f;
+        }
+        img {
+            width: 300px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+            display: none;
+        }
+        p {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Need a little joy? Click the button! 😊</h1>
+    <p id="message"></p>
+    <img id="randomImage" src="" alt="Surprise Image">
+    <button id="surpriseBtn">Surprise Me!</button>
+
+    <audio id="happySound">
+        <source src="https://www.myinstants.com/media/sounds/tadaa.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        document.getElementById("surpriseBtn").addEventListener("click", function () {
+            const messages = [
+                "You're amazing! Never forget that. 💖",
+                "Smile! You're loved and appreciated! 😊",
+                "You're doing great! Keep going! 🚀",
+                "The world is better because you're in it! 🌍❤️",
+                "Happiness looks great on you! 😊✨"
+            ];
+
+            const images = [
+                "https://placebear.com/300/200",  // Cute bear
+                "https://placekitten.com/300/200", // Adorable kitten
+                "https://placedog.net/300/200",   // Happy dog
+                "https://source.unsplash.com/300x200/?panda,cute", // Cute panda
+                "https://source.unsplash.com/300x200/?nature,beautiful" // Beautiful nature
+            ];
+
+            const websites = [
+                "https://theuselessweb.com/",
+                "https://www.boredpanda.com/",
+                "https://www.sporcle.com/",
+                "https://www.crazygames.com/",
+                "https://www.pointerpointer.com/"
+            ];
+
+            // Select a random message and image
+            const messageIndex = Math.floor(Math.random() * messages.length);
+            const imageIndex = Math.floor(Math.random() * images.length);
+
+            document.getElementById("message").innerText = messages[messageIndex];
+            document.getElementById("message").style.display = "block";
+
+            document.getElementById("randomImage").src = images[imageIndex];
+            document.getElementById("randomImage").style.display = "block";
+
+            // Play happy sound
+            document.getElementById("happySound").play();
+
+            // After 3 seconds, open a fun surprise website
+            setTimeout(() => {
+                const randomWebsite = websites[Math.floor(Math.random() * websites.length)];
+                window.open(randomWebsite, '_blank');
+            }, 3000);
+        });
+    </script>
+
+</body>
+</html>
+
+
